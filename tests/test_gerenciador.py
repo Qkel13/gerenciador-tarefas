@@ -1,6 +1,7 @@
-from fastapi.testclient import TestClient
 from fastapi import status
-from gerenciador_tarefas.gerenciador import app, TAREFAS
+from fastapi.testclient import TestClient
+
+from gerenciador_tarefas.gerenciador import TAREFAS, app
 
 
 def test_quando_listar_tarefas_devo_ter_como_retorno_codigo_de_status_200():
@@ -79,4 +80,3 @@ def test_quando_listar_tarefas_a_tarefa_retornada_deve_possuir_um_estado():
     resposta = cliente.get("/tarefas")
     assert "estado" in resposta.json().pop()
     TAREFAS.clear()
-
